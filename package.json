@@ -1,0 +1,29 @@
+{
+  "name": "xianyun",
+  "version": "1.0.0",
+  "description": "My lovely Nuxt.js project",
+  "author": "qiangyanhuanxiao",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0",
+    "element-ui": "^2.4.11",
+    "@nuxtjs/axios": "^5.3.6"
+  },
+  "devDependencies": {},
+  "main": "nuxt.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunchunge/xianyunlvyou.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chunchunge/xianyunlvyou/issues"
+  },
+  "homepage": "https://github.com/chunchunge/xianyunlvyou#readme"
+}
