@@ -1,7 +1,7 @@
 <template>
-    <div>
-        首页
-    </div>
+  <div>
+      酒店页
+  </div>
 </template>
 
 <script>
