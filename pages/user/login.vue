@@ -11,13 +11,18 @@
             @click="handleChangeTab(index)"
           >{{item}}</span>
         </el-row>
+        <loginForm/>
       </div>
     </el-row>
   </div>
 </template>
 
 <script>
+import loginForm from '@/components/user/loginForm'
 export default {
+  components:{
+    loginForm
+  },
   data(){
     return {
       currentTab:0
