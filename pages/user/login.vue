@@ -11,7 +11,7 @@
             @click="handleChangeTab(index)"
           >{{item}}</span>
         </el-row>
-        <loginForm/>
+        <loginForm v-if="currentTab == 0"/>
       </div>
     </el-row>
   </div>
