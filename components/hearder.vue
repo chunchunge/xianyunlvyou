@@ -36,7 +36,18 @@
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-
+        <!-- 如果token存在就显示用户个人资料 -->
+          <el-dropdown v-if="$store.state.user.userInfo.token">
+    <el-row type="flex" align="middle" class="el-dropdown-link">
+        <nuxt-link to="#">
+          <!-- 从store里面拿数据 -->
+            <img :src="$axios.defaults.baseURL + $store.state.user.userInfo.user.defaultAvatar"/>
+            {{$store.state.user.userInfo.user.nickname}} 
+        </nuxt-link>
+        <i class="el-icon-caret-bottom el-icon--right"></i>
+    </el-row>
+    <!-- 其他代码... -->
+</el-dropdown>
         <!-- 不存在用户信息展示登录注册链接 -->
         <nuxt-link to="/user/login" class="account-link" v-else>登录 / 注册</nuxt-link>
       </el-row>
