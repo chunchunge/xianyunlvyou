@@ -11,6 +11,13 @@ export const mutations={
     setUserInfo(state, data){
         state.userInfo = data;
     },
+    // 清除本地数据
+    cleanUserInfo(state,info){
+        if(process.browser){
+            localStorage.removeItem("userInfo");
+        }
+        state.userInfo={};
+    }
 };
 export const actions={
    // 登录
