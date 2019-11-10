@@ -1,4 +1,4 @@
-// 用户管理
+// 用户管理仓库
 export const state=()=>({
     // 采用接口返回的数据结构需要暴露出来
     userInfo:{
@@ -6,6 +6,7 @@ export const state=()=>({
         user:{}
     }
 })
+// 同步修改的固定写法
 export const mutations={
     // 保存用户信息到state
     setUserInfo(state, data){
@@ -19,6 +20,7 @@ export const mutations={
         state.userInfo={};
     }
 };
+// 异步修改的固定方法
 export const actions={
    // 登录
    login({commit}, data){
