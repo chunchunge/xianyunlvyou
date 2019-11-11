@@ -46,19 +46,25 @@ export default {
   },
   methods: {
     // 提交登录
-    async handleLoginSubmit() {
-      // 发送ajax请求
-      
-     
-          await this.$store.dispatch("user/login", this.form)
-            // 成功提示
-            this.$message.success("登陆成功，正在跳转");
-            // 跳转页面
-           
-              this.$router.replace("/");
-          
-        
-    }
+      handleLoginSubmit() {
+        // 发送ajax请求
+        this.$refs['form'].validate((valid)=>{
+            // 如果返回的valid为ture则表示没有错误
+            if(valid){
+                this.$store.dispatch('user/login',this.form).then(res=>{
+                    // 成功提示
+                    this.$message({
+                        message:"登陆成功，正在跳转",
+                        type:"success"
+                    });
+                    // 跳转页面
+                    setTimeout(()=>{
+                        this.$router.replace("/")
+                    },1000)
+                })
+            }
+        })
+      }
   }
 };
 </script>
