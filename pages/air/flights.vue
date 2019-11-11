@@ -10,9 +10,7 @@
                 </div>
                 
                 <!-- 航班头部布局 -->
-                <div>
-                    
-                </div>
+                 <FlightsListHead/>
                 
                 
                 <!-- 航班信息 -->
@@ -32,8 +30,11 @@
 <script>
 
 import moment from "moment";
-
+import FlightsListHead from "@/components/air/flightsListHead.vue"
 export default {
+     components: {
+        FlightsListHead
+    },
     data(){
         return {
             
