@@ -5,7 +5,7 @@
       <div class="flights-content">
         <!-- 过滤条件 -->
         <div>
-            <FlightsFilters/>
+          <FlightsFilters :data="flightsData" />
         </div>
 
         <!-- 航班头部布局 -->
@@ -47,7 +47,7 @@
 import moment from "moment";
 import FlightsListHead from "@/components/air/flightsListHead.vue";
 import FlightsItem from "@/components/air/flightsItem.vue";
-import FlightsFilters from "@/components/air/flightsFilters.vue"
+import FlightsFilters from "@/components/air/flightsFilters.vue";
 export default {
   components: {
     FlightsListHead,
@@ -56,7 +56,11 @@ export default {
   },
   data() {
     return {
-      flightsData: {}, // 航班总数据
+      flightsData: {
+        flights: [],
+        info: {},
+        options: {}
+      }, // 航班总数据
       dataList: [], // 航班列表数据，用于循环flightsItem组件，单独出来是因为要分页
       pageIndex: 1, // 当前页数
       pageSize: 5 // 显示条数
@@ -70,31 +74,29 @@ export default {
         params: this.$route.query //获取来自url上的五个数据
       }).then(res => {
         this.flightsData = res.data;
-       this.setDataList(); // 初始化dataList数据，获取1 - 10条
-      })
+        this.setDataList(); // 初始化dataList数据，获取1 - 10条
+      });
     },
-    setDataList(){
-        const start=(this.pageIndex-1)*this.pageSize;
-        const end =start+this.pageSize;
-        this.dataList=this.flightsData.flights.slice(start,end);
+    setDataList() {
+      const start = (this.pageIndex - 1) * this.pageSize;
+      const end = start + this.pageSize;
+      this.dataList = this.flightsData.flights.slice(start, end);
     },
     // 切换条数时触发的函数
-    handleSizeChange(value){
-        this.pageSize=value;
-        this.pageIndex=1;
-        this.setDataList();
+    handleSizeChange(value) {
+      this.pageSize = value;
+      this.pageIndex = 1;
+      this.setDataList();
     },
     // 切换页数时触发的函数
-    handleCurrentChange(value){
-        this.pageIndex=value;
-        this.setDataList();
+    handleCurrentChange(value) {
+      this.pageIndex = value;
+      this.setDataList();
     }
-
   },
   mounted() {
     this.getData();
-  },
-
+  }
 };
 </script>
 
