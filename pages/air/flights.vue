@@ -15,7 +15,8 @@
                 
                 <!-- 航班信息 -->
                 <div>
-                    
+                     <!-- 航班列表 -->
+                    <FlightsItem/>
                 </div>
             </div>
 
@@ -31,9 +32,11 @@
 
 import moment from "moment";
 import FlightsListHead from "@/components/air/flightsListHead.vue"
+import FlightsItem from "@/components/air/flightsItem.vue"
 export default {
      components: {
-        FlightsListHead
+        FlightsListHead,
+          FlightsItem
     },
     data(){
         return {
