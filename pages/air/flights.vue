@@ -16,7 +16,9 @@
                 <!-- 航班信息 -->
                 <div>
                      <!-- 航班列表 -->
-                    <FlightsItem/>
+                    <FlightsItem v-for="(item, index) in dataList" 
+                    :key="index" 
+                    :data="item"/>
                 </div>
             </div>
 
@@ -40,8 +42,25 @@ export default {
     },
     data(){
         return {
-            
+             flightsData: {}, // 航班总数据
+            dataList: []     // 航班列表数据，用于循环flightsItem组件，单独出来是因为要分页
         }
+    },
+    methods:{
+        // 获取航班总数据
+        getData(){
+            this.$axios({
+                url:'airs',
+                params:this.$route.query//获取来自url上的五个数据
+
+            }).then(res=>{
+                this.flightsData=res.data;
+                this.dataList=this.flightsData.flights;
+            })
+        }
+    },
+    mounted(){
+        this.getData();
     }
 }
 </script>
