@@ -134,7 +134,9 @@ export default {
                 method: "POST",
                 data: props
             }).then(res => {
-                console.log(res.data);
+              
+               
+                
             })
         } 
     });
