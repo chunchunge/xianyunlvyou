@@ -33,6 +33,8 @@
         <div class="insurance-item" v-for="(item, index) in data.insurances" :key="index">
           <el-checkbox
             :label="`${item.type}：￥${item.price}/份×${users.length}  最高赔付${item.compensation}`"
+            @change="handleInsurance(item.id)"
+            v-model="insurances"
             border
           ></el-checkbox>
         </div>
@@ -81,10 +83,16 @@ export default {
           username: "",
           id: ""
         }
-      ]
+      ],
+        insurances : [],//保险数据
+        contactName:"",//联系人名字
+        contactPhone:"",//联系人电话
+        captcha:"000000",//验证码
+        invoice:false//发票
     };
   },
   methods: {
+ 
     // 添加乘机人
     handleAddUsers() {
       this.users = [
@@ -100,7 +108,16 @@ export default {
     handleDeleteUser(index) {
       this.users.splice(index, 1);
     },
-
+      handleInsurance(id){
+    // 存在则去除
+    if(this.insurances.indexOf(id) > -1){
+        let arr = this.insurances.slice(0);
+        arr.splice(this.insurances.indexOf(id), 1);
+        this.insurances = arr;
+    }else{ // 不存在添加到insurances
+        this.insurances = [...new Set([...this.insurances, id])]
+    }
+},
     // 发送手机验证码
     handleSendCaptcha() {},
 
