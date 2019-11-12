@@ -204,7 +204,16 @@ export default {
         path:"/air/flights",
         query:this.form
       })
+      const airs = JSON.parse(localStorage.getItem('airs') || `[]`);
+    airs.push(this.form);
+    localStorage.setItem("airs", JSON.stringify(airs));
+
+    this.$router.push({
+        path: "/air/flights",
+        query: this.form
+    })
     }
+    
   },
   mounted() {}
 };

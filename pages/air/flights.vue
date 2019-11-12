@@ -52,6 +52,11 @@ import FlightsListHead from "@/components/air/flightsListHead.vue";
 import FlightsItem from "@/components/air/flightsItem.vue";
 import FlightsFilters from "@/components/air/flightsFilters.vue";
 export default {
+   watch: {
+        $route(){
+             this.getData();
+        }
+    },
   components: {
     FlightsListHead,
     FlightsItem,
