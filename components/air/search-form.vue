@@ -42,6 +42,7 @@
           style="width: 100%;"
           @change="handleDate"
           v-model="form.departDate"
+          :picker-options="pickerOptions"
         ></el-date-picker>
       </el-form-item>
       <el-form-item label>
@@ -60,6 +61,7 @@ import { resolve, reject } from "q";
 export default {
   data() {
     return {
+      
       tabs: [
         { icon: "iconfont icondancheng", name: "单程" },
         { icon: "iconfont iconshuangxiang", name: "往返" }
@@ -71,12 +73,24 @@ export default {
         destCity: "", // 到达城市
         destCode: "", // 到达城市代码
         departDate: "" // 日期字符串
-      }
-    };
+      },
+      pickerOptions: {
+          disabledDate(time) {
+            return time.getTime() < Date.now() - 3600 * 1000 * 24;
+          }}
+    }
+     
   },
   methods: {
     // tab切换时触发
-    handleSearchTab(item, index) {},
+    handleSearchTab(item, index) {
+      if(index===1){
+        this.$message({
+          message: '抱歉该服务暂未开通',
+          type: 'warning'
+        });
+      }
+    },
 
     // 出发城市输入框获得焦点时触发
     // value 是选中的值，cb是回调函数，接收要展示的列表
