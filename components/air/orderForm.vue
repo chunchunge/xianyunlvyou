@@ -46,11 +46,11 @@
       <div class="contact">
         <el-form label-width="60px">
           <el-form-item label="姓名">
-            <el-input></el-input>
+            <el-input v-model="contactName"></el-input>
           </el-form-item>
 
           <el-form-item label="手机">
-            <el-input placeholder="请输入内容">
+            <el-input placeholder="请输入内容" v-model="contactPhone">
               <template slot="append">
                 <el-button @click="handleSendCaptcha">发送验证码</el-button>
               </template>
@@ -58,7 +58,7 @@
           </el-form-item>
 
           <el-form-item label="验证码">
-            <el-input></el-input>
+            <el-input v-model="captcha"></el-input>
           </el-form-item>
         </el-form>
         <el-button type="warning" class="submit" @click="handleSubmit">提交订单</el-button>
@@ -119,12 +119,82 @@ export default {
     }
 },
     // 发送手机验证码
-    handleSendCaptcha() {},
+    handleSendCaptcha() {
+        if(!this.contactPhone){
+            this.$confirm('手机号不能为空','提示',{
+                confirmButtonText:'确定',
+                showCancelButton:false,
+                type:'warning'
+            })
+            return;
+        }
+        if(this.contactPhone.length !== 11){
+        this.$confirm('手机号码格式错误', '提示', {
+            confirmButtonText: '确定',
+            showCancelButton: false,
+            type: 'warning'
+        })
+        return;
+    }
+      this.$axios({
+        url: `/captchas`,
+        method: "POST",
+        data: {
+            tel: this.contactPhone
+        }
+    }).then(res => {
+        const {code} = res.data;
+        this.$confirm(`模拟手机验证码为：${code}`, '提示', {
+            confirmButtonText: '确定',
+            showCancelButton: false,
+            type: 'warning'
+        })
+    })
+    },
 
     // 提交订单
-    handleSubmit() {}
+    handleSubmit() {
+         const orderData = {
+        users: this.users,
+        insurances: this.insurances,
+        contactName: this.contactName,
+        contactPhone: this.contactPhone,
+        invoice: this.invoice,
+        captcha: this.captcha,
+        seat_xid: this.data.seat_infos.seat_xid,
+        air: this.data.id
+    }
+
+   const {user: {userInfo}} = this.$store.state;
+    this.$message({
+        message: "正在生成订单！请稍等",
+        type: "success"
+    })
+    this.$axios({
+        url:'/airorders',
+        method:'POST',
+        data:orderData,
+        headers:{
+            Authorization:`Bearer ${userInfo.token || 'NO TOKEN'}`
+        }
+    }).then(res=>{
+        //跳转到付款页
+        this.router.push({
+            path:'/air/pay'
+        });
+    }).catch(err=>{
+        const {message} =err.reposonse.data;
+         // 警告提示
+        this.$confirm(message, '提示', {
+            confirmButtonText: '确定',
+            showCancelButton: false,
+            type: 'warning'
+        })
+    })
+}
+    }
   }
-};
+
 </script>
 
 <style scoped lang="less">
