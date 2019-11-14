@@ -187,11 +187,15 @@ export default {
         }
       })
         .then(res => {
+          const {data: {id}} = res.data;
           // 跳转到付款页
           console.log("123");
 
           this.$router.push({
-            path: "/air/pay"
+            path: "/air/pay",
+            query: {
+                       id
+                    }
           });
         })
         .catch(err => {

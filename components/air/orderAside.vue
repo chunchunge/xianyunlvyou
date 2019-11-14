@@ -20,7 +20,7 @@
                 </el-col>
                 <el-col :span="5" class="flight-airport">
                     <strong>{{data.arr_time}}</strong>
-                    <span>浦东机场T2</span>
+                    <span>{{data.dst_airport_name}}{{data.dst_airport_quay}}</span>
                 </el-col>
             </el-row> 
         </div>
@@ -59,9 +59,10 @@ export default {
             default: 0
         }
     },
-
     computed: {
         rankTime(){
+            console.log(this.data);
+            
             // 数据还未请求回来
             if(!this.data.dep_time) return "";
 
