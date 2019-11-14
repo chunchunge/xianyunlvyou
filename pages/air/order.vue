@@ -5,23 +5,28 @@
       <OrderForm :data="infoData" />
 
       <!-- 侧边栏 -->
-      <div class="aside"></div>
+      <div class="aside">
+         <OrderAside :data="infoData"/>
+      </div>
     </el-row>
   </div>
 </template>
 
 <script>
 import OrderForm from "@/components/air/orderForm.vue";
+import OrderAside from "@/components/air/OrderAside.vue";
 export default {
   data() {
     return {
       infoData: {
-        insurances: [] //初始化保险数据
+        insurances: [], //初始化保险数据
+        seat_infos: {}
       }
     };
   },
   components: {
-    OrderForm
+    OrderForm,
+    OrderAside
   },
   mounted() {
     const { query } = this.$route;
