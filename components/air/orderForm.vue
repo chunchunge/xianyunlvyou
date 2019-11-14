@@ -179,11 +179,13 @@ export default {
         }
     }).then(res=>{
         // 跳转到付款页
+        console.log("123");
+        
         this.$router.push({
             path: "/air/pay"
         });
     }).catch(err=>{
-        const {message} =err.reposonse.data;
+        const {message} =err.response.data;
          // 警告提示
         this.$confirm(message, '提示', {
             confirmButtonText: '确定',

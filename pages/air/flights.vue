@@ -5,7 +5,7 @@
       <div class="flights-content">
         <!-- 过滤条件 -->
         <div>
-          <FlightsFilters :data="flightsData" @setDataList="setDataList"/>
+          <FlightsFilters :data="cacheFlightsData" @setDataList="setDataList"/>
         </div>
 
         <!-- 航班头部布局 -->
