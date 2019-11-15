@@ -184,7 +184,7 @@ export default {
         method: "POST",
         data:orderData,
         headers: {
-          Authorization: `Bearer ${userInfo.token || "NO TOKEN"}`
+           Authorization: `Bearer ${userInfo.token || 'NO TOKEN'}`
         }
       })
         .then(res => {
