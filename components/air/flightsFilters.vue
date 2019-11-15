@@ -8,7 +8,7 @@
         {{data.info.departDate}}
       </el-col>
       <el-col :span="4">
-        <el-select size="mini" v-model="airport" placeholder="起飞机场" @change="handleAirport">
+        <el-select size="mini" v-model="airport" placeholder="起飞机场">
           <el-option
             v-for="(item, index) in data.options.airport"
             :key="index"
@@ -18,7 +18,7 @@
         </el-select>
       </el-col>
       <el-col :span="4">
-        <el-select size="mini" v-model="flightTimes" placeholder="起飞时间" @change="handleFlightTimes">
+        <el-select size="mini" v-model="flightTimes" placeholder="起飞时间">
           <el-option
             v-for="(item, index) in data.options.flightTimes"
             :key="index"
@@ -28,7 +28,7 @@
         </el-select>
       </el-col>
       <el-col :span="4">
-        <el-select size="mini" v-model="company" placeholder="航空公司" @change="handleCompany">
+        <el-select size="mini" v-model="company" placeholder="航空公司">
           <el-option
             v-for="(item, index) in data.options.company"
             :key="index"
@@ -38,7 +38,7 @@
         </el-select>
       </el-col>
       <el-col :span="4">
-        <el-select size="mini" v-model="airSize" placeholder="机型" @change="handleAirSize">
+        <el-select size="mini" v-model="airSize" placeholder="机型">
           <el-option
             v-for="(item, index) in sizeOptions"
             :key="index"
@@ -53,6 +53,8 @@
       <el-button type="primary" round plain size="mini"
        @click="handleFiltersCancel">撤销</el-button>
     </div>
+    <!-- 只是为了单纯触发computed的函数调用，不需要显示内容 -->
+        <span v-show="false">{{filter}}</span>
   </div>
 </template>
 
@@ -77,38 +79,29 @@ export default {
       default: {}
     }
   },
+  computed:{
+    filter(){
+      let arr=[];
+      arr=this.data.flights.filter(v=>{
+        // 假设所有数据都是符合条件的
+        let valid=true;
+        //开始和出发的事件段
+        const [start,end]=this.flightTimes.split(",");
+        // 航班出发的小时
+        const current =+v.dep_time.split(":")[0];
+        // 然后找出不符合条件的
+        if(this.airport && this.airport !=v.org_airport_name||this.company && this.company !=v.airline_name|| this.airSize && this.airSize !=v.plane_size|| this.flightTimes&& !(+start<=current && current < +end)){
+          valid=false;
+        }
+        return valid;
+      })
+       // 触发传递的事件，修改dataList
+            this.$emit("setDataList", arr)
+            // 随便return的；
+            return "";
+    }
+  },
   methods: {
-    // 选择机场时候触发
-    handleAirport(value) {
-      const arr = this.data.flights.filter(v => v.org_airport_name === value);
-      this.$emit("setDataList", arr);
-    },
-
-    handleFlightTimes(value) {
-      const [from, to] = value.split(","); // [6,12]
-
-      const arr = this.data.flights.filter(v => {
-        // 出发时间小时
-        const start = +v.dep_time.split(":")[0];
-        return start >= from && start < to;
-      });
-
-      this.$emit("setDataList", arr);
-    },
-
-    // 选择航空公司时候触发
-    handleCompany(value) {
-      const arr = this.data.flights.filter(v => v.airline_name === value);
-
-      this.$emit("setDataList", arr);
-    },
-
-    handleAirSize(value) {
-      const arr = this.data.flights.filter(v => v.plane_size === value);
-
-      this.$emit("setDataList", arr);
-    },
-
     // 撤销条件时候触发
     handleFiltersCancel() {
       this.airport = "";
