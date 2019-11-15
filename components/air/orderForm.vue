@@ -170,7 +170,8 @@ export default {
         seat_xid: this.data.seat_infos.seat_xid,
         air: this.data.id
       };
-
+  console.log(orderData);
+  
       const {
         user: { userInfo }
       } = this.$store.state;
@@ -181,22 +182,16 @@ export default {
       this.$axios({
         url: "/airorders",
         method: "POST",
-        data: orderData,
+        data:orderData,
         headers: {
           Authorization: `Bearer ${userInfo.token || "NO TOKEN"}`
         }
       })
         .then(res => {
-          const {data: {id}} = res.data;
           // 跳转到付款页
-          console.log("123");
-
-          this.$router.push({
-            path: "/air/pay",
-            query: {
-                       id
-                    }
-          });
+        this.$router.push({
+            path: "/air/pay"
+        });
         })
         .catch(err => {
           const { message } = err.response.data;
