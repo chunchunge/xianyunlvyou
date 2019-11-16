@@ -98,13 +98,15 @@ export default {
 }
  .lists {
       width: 320px;
-     
+    
       position: absolute;
       top: 0;
       left: 260px;
       padding:10px 20px;
       border:1px solid #999;
       box-sizing: border-box;
+       z-index: 999;
+       background: #fff;
       .listOne{
         line-height: 30px;
           height: 30px;
