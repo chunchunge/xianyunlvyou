@@ -30,7 +30,6 @@ export default {};
 .contianer {
   width: 1000px;
   margin: 20px auto;
-
   position: absolute;
   top: 56px;
   left: 555px;
@@ -68,7 +67,6 @@ export default {};
   .tuijiangonglv {
 
    margin-top:10px;
-    font-size: 12px;
     color: #666;
     display: flex;
     justify-content: space-between;
@@ -82,10 +80,6 @@ export default {};
       border-bottom: 2px solid orange;
     padding-bottom: 20px;
     }
-
-.xieyouji{
-    background: #409eff;
-}
   }
 }
 </style>
