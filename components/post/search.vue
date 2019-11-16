@@ -5,10 +5,20 @@
       <i class="el-icon-search"></i>
     </div>
     <div class="tuijian">
-        推荐 ：
-        <span>广州</span>
-        <span>上海</span>
-        <span>北京</span>
+      推荐 ：
+      <span>广州</span>
+      <span>上海</span>
+      <span>北京</span>
+    </div>
+    <div class="tuijiangonglv">
+      <h4>推荐攻略</h4>
+      <el-row>
+          <el-button type="primary"> 
+              <i class="el-icon-edit"></i>
+          写游记
+          </el-button>
+      
+      </el-row>
     </div>
   </section>
 </template>
@@ -47,13 +57,35 @@ export default {};
     font-weight: 700;
     margin-right: 10px;
   }
-    .tuijian{
-        padding: 10px 0;
+  .tuijian {
+    padding: 10px 0;
     font-size: 12px;
     color: #666;
+  }
+  span {
+    padding-left: 2px;
+  }
+  .tuijiangonglv {
+
+   margin-top:10px;
+    font-size: 12px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    h4 {
+      font-size: 18px;
+      color: orange;
+      font-weight: 400;
+      display: block;
+      border-bottom: 2px solid orange;
+    padding-bottom: 20px;
     }
-    span{
-        padding-left:2px;
-    }
+
+.xieyouji{
+    background: #409eff;
+}
+  }
 }
 </style>

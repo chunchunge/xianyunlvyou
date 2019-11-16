@@ -2,6 +2,7 @@
 <div>
   <Navigation/>
      <Search/>
+     
 </div>
     
     
@@ -18,6 +19,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+  
 </style>
