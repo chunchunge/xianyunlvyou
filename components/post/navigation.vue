@@ -17,7 +17,7 @@
     <div class="tuijian">
          <h4>推荐城市</h4>
          <div class="img">
-
+           <img src="@/assets/images/pic_sea.jpeg" alt="">
          </div>
         </div>
   </section>
@@ -157,5 +157,9 @@ export default {
       background: skyblue;
       margin-top:15px;
     }
+  }
+  img{
+    width: 100%;
+    height: 100%;
   }
 </style>
