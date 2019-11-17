@@ -1,8 +1,9 @@
 <template>
 <div>
   <Navigation/>
+  
      <Search/>
-     
+     <ArticleList/>
 </div>
     
     
@@ -11,10 +12,12 @@
 <script>
 import Navigation from "@/components/post/navigation"
 import Search from "@/components/post/search"
+import ArticleList from "@/components/post/articleList"
 export default {
   components:{
     Navigation,
-    Search
+    Search,
+    ArticleList
   }
 }
 </script>

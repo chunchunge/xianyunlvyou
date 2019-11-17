@@ -12,8 +12,14 @@
                 <span class="num">{{index+1}}</span> <span class="dibiao">{{item.city}}</span> <span class="miaoshu">{{item.desc}}</span>
             </div>
         </div>
+        
     </div>
-    
+    <div class="tuijian">
+         <h4>推荐城市</h4>
+         <div class="img">
+
+         </div>
+        </div>
   </section>
 </template>
 
@@ -135,6 +141,21 @@ export default {
         width: 100px;
         height: 20px;
       }
+    }
+  }
+  .tuijian{
+     width: 260px;
+     float: left;
+    h4{
+      font-weight: 500;
+      padding:15px 0;
+      border-bottom: 1px solid #666;
+    }
+    .img{
+      width: 260px;
+      height: 173px;
+      background: skyblue;
+      margin-top:15px;
     }
   }
 </style>
