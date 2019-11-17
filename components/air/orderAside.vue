@@ -54,10 +54,7 @@ export default {
             default: {}
         },
           // 总金额
-        allPrice: {
-            type: Number,
-            default: 0
-        }
+        allPrice:0
     },
     computed: {
         rankTime(){
