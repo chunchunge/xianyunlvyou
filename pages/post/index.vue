@@ -5,7 +5,7 @@
      <Search/>
      <ArticleList/>
 </div>
-    
+  
     
 </template>
 

@@ -6,9 +6,9 @@
     </div>
     <div class="tuijian">
       推荐 ：
-      <span>广州</span>
-      <span>上海</span>
-      <span>北京</span>
+      <span class="te">广州</span>
+      <span class="te">上海</span>
+      <span class="te">北京</span>
     </div>
     <div class="tuijiangonglv">
       <h4>推荐攻略</h4>
@@ -57,6 +57,12 @@ export default {};
     margin-right: 10px;
   }
   .tuijian {
+    :hover{
+      color:orange;
+    }
+    .te{
+      cursor:pointer;
+    }
     padding: 10px 0;
     font-size: 12px;
     color: #666;
