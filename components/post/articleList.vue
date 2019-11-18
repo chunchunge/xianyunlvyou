@@ -74,6 +74,7 @@
         </div>
       </div>
     </div>
+    <span v-show="false">{{allPrice}}</span>
     <!-- 分页 -->
     <el-row type="flex" justify="center" style="margin-top:10px;">
       <!-- size-change：切换条数时候触发 -->
@@ -100,44 +101,59 @@ export default {
     return {
       list: [],
       pageIndex: 1, // 当前页数
-      pageSize: 3,  // 显示条数
-      dataList:[]
+      pageSize: 3, // 显示条数
+      dataList: [],
+      city: ""
     };
   },
   mounted() {
-    this.getData()
-   
+    this.getData();
+  },
+  computed: {
+    allPrice() {
+      this.city = this.$store.state.post.city;
+      console.log(this.city);
+    }
   },
   methods: {
-    getData(){
-       this.$axios({
-      url: "/posts"
-    }).then(res => {
-      const { data } = res.data;
-      this.list = data;
-      this.setDataList();
-    });
+    getData() {
+      this.$axios({
+        url: "/posts"
+      }).then(res => {
+        const { data } = res.data;
+        this.list = data;
+        this.setDataList();
+      });
     },
-     setDataList(){
-            const start = (this.pageIndex - 1) * this.pageSize; 
-            const end = start + this.pageSize; 
-            this.dataList = this.list.slice(start, end);
-            console.log(this.dataList);
-            
-        },
+    setDataList() {
+      const start = (this.pageIndex - 1) * this.pageSize;
+      const end = start + this.pageSize;
+      this.dataList = this.list.slice(start, end);
+      console.log(this.dataList);
+    },
 
-        // 切换条数时触发
-        handleSizeChange(value){
-            this.pageSize = value;
-            this.pageIndex = 1;
+    // 切换条数时触发
+    handleSizeChange(value) {
+      this.pageSize = value;
+      this.pageIndex = 1;
+      if (this.city == null) {
+        this.setDataList();
+      }else{
+        this.dataList.forEach((e,index)=>{
+          if(e[index].city.name==this.city){
             this.setDataList();
-        },
+          }else{
+            return;
+          }
+        })
+      }
+    },
 
-        // 切换页数时触发
-        handleCurrentChange(value){
-            this.pageIndex = value;
-            this.setDataList();
-        },
+    // 切换页数时触发
+    handleCurrentChange(value) {
+      this.pageIndex = value;
+      this.setDataList();
+    }
   }
 };
 </script>

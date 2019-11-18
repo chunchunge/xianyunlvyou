@@ -13,7 +13,7 @@
     <div class="tuijiangonglv">
       <h4>推荐攻略</h4>
       <el-row>
-          <el-button type="primary"> 
+          <el-button type="primary" @click="changePage"> 
               <i class="el-icon-edit"></i>
           写游记
           </el-button>
@@ -34,6 +34,11 @@ export default {
     searchlist(){
       // 保存到store里面去
       this.$store.commit("post/changeCity",this.val);
+    },
+    changePage(){
+      this.$router.push({
+        path:"/post/xieyouji"
+      })
     }
   }
 };
