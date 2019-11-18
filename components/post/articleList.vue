@@ -1,7 +1,7 @@
 <template>
   <section class="contianer">
-    <div v-for="(item,index) in dataList" :key="index">
-      <div class="list" v-if="list[index].images.length >= 3">
+    <div v-for="(item,index) in dataList" :key="index" @click="changeXiangqing(index)">
+      <div class="list" v-if="list[index].images.length >= 3" >
         <div>
           <div class="h">
             <h4>{{item.title}}</h4>
@@ -153,6 +153,16 @@ export default {
     handleCurrentChange(value) {
       this.pageIndex = value;
       this.setDataList();
+    },
+    changeXiangqing(index){
+        
+      this.$router.push({
+        path:"/post/xiangqing",
+        query: {
+                    id:index,
+                   
+                }
+      })
     }
   }
 };
