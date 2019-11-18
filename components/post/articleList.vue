@@ -159,7 +159,7 @@ export default {
       this.$router.push({
         path:"/post/xiangqing",
         query: {
-                    id:index,
+                    id:this.list[index].id,
                    
                 }
       })
