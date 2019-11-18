@@ -104,6 +104,8 @@ export default {
       const start = (this.pageIndex - 1) * this.pageSize;
       const end = start + this.pageSize;
       this.dataList = this.flightsData.flights.slice(start, end);
+      console.log(this.flightsData.flights);
+      
     },
     // 切换条数时触发的函数
     handleSizeChange(value) {
