@@ -1,8 +1,8 @@
 <template>
   <section class="contianer">
     <div class="searchs">
-      <input type="text" class="text" placeholder="请输入想去的地方，比如 “ 广州 ” " />
-      <i class="el-icon-search"></i>
+      <input type="text" class="text" placeholder="请输入想去的地方，比如 “ 广州 ” "  v-model="val"/>
+      <i class="el-icon-search" @click="searchlist"></i>
     </div>
     <div class="tuijian">
       推荐 ：
@@ -24,7 +24,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      val:""
+    }
+  },
+  methods:{
+    searchlist(){
+      // 保存到store里面去
+      this.$store.commit("post/changeCity",this.val);
+    }
+  }
+};
 </script>
 <style lang="less" scoped>
 .contianer {
