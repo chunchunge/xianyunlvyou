@@ -29,23 +29,36 @@
           </div>
           <div class="ctrl-item">
             <i class="iconfont iconding"></i>
-            <p> 
-              <span  v-if="data.like==null">点赞 0 </span>
-              <span  v-else>点赞 {{data.like}}</span>
-              </p>
+            <p>
+              <span v-if="data.like==null">点赞 0</span>
+              <span v-else>点赞 {{data.like}}</span>
+            </p>
           </div>
         </div>
       </div>
-      <Pinglun/>
+      <Pinglun />
     </div>
-    <div class="right">123</div>
+    <div class="right">
+      <h4 class="about">相关攻略</h4>
+      <div class="recommend-list">
+        <div class="post-imgText">
+          <div class="post-img">
+            <img src="@/assets/images/pic_sea.jpeg" alt />
+          </div>
+          <div class="post-text">
+            <div>发表攻略</div>
+            <p>2019-11-18 9:14 阅读 3</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import Pinglun from "@/components/post/pinglun"
+import Pinglun from "@/components/post/pinglun";
 export default {
-  components:{
+  components: {
     Pinglun
   },
   data() {
@@ -91,7 +104,7 @@ export default {
         text-align: right;
       }
     }
-    
+
     .post-ctrl {
       padding: 50px 0 30px;
       .ctrl-item {
@@ -111,17 +124,63 @@ export default {
         }
       }
     }
-    
   }
-  
+
   .right {
     width: 280px;
+    .about {
+      font-weight: 400;
+      font-size: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+
+      .post-img {
+        width: 100px;
+        height: 80px;
+        flex-shrink: 0;
+        background: #ddd;
+        overflow: hidden;
+        margin-right: 10px;
+      }
+    }
   }
 }
 // 深度选择器
-    .main /deep/ span > img {
-      width: 100%;
-      height: 100%;
-      padding: 10px 0;
-    }
+.main /deep/ span > img {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+}
+img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+}
+.post-imgText {
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+.post-text {
+  flex: 1;
+  position: relative;
+  margin-left:10px;
+  > div {
+    line-height: 1.4em;
+    height: 2.8em;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  > p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 12px;
+    color: #999;
+  }
+}
 </style>

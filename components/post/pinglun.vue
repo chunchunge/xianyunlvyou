@@ -50,6 +50,38 @@
           </div>
         </div>
       </div>
+      <div class="cmt-item">
+        <div class="cmt-info">
+         <div class="img"></div>
+         <span class="one">保护敌方水晶</span>
+          <i>2019-11-18 7:47</i>
+          <span class="louceng">2</span>
+        </div>
+        <div class="cmt-content">
+          <div class="cmt-floor">
+            <!---->
+            <div class="cmt-content">
+              <div class="cmt-info">
+                保护敌方水晶
+                <i>2019-11-18 7:11</i>
+                <span class="louceng">1</span>
+              </div>
+              <p class="cmt-message">这就是爱情吗</p>
+              <div class="el-row el-row--flex"></div>
+              <div class="cmt-ctrl">
+                <a href="javascript:;">回复</a>
+              </div>
+            </div>
+          </div>
+          <div class="cmt-new">
+            <p class="cmt-message">是酒不好喝，还是烟不好抽，还谈爱情吗</p>
+            <div class="el-row el-row--flex"></div>
+            <div class="cmt-ctrl">
+              <a href="javascript:;">回复</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -120,33 +152,43 @@ export default {
           width: 80px;
           height: 80px;
           box-sizing: border-box;
-          
-          
         }
       }
     }
   }
 }
+.cmt-floor{
+  background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin-left:20px;
+}
+.cmt-new{
+  .cmt-message{
+    margin-left:20px;
+    margin-top:13px;
+  }
+}
 .cmt-ctrl {
-            height: 20px;
-            line-height: 20px;
-            font-size: 12px;
-            color: #1e50a2;
-            text-align: right;
-          }
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #1e50a2;
+  text-align: right;
+}
 .el-upload {
   width: 100px;
   height: 100px;
 }
 .cmt-pic {
-            width: 80px;
-            height: 80px;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-right: 5px;
-            margin-top: 10px;
-            padding: 5px;
-            border: 1px dashed #ddd;
-            margin-left:35px
-          }
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-right: 5px;
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px dashed #ddd;
+  margin-left: 35px;
+}
 </style>
