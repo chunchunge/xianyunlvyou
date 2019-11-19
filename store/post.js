@@ -6,7 +6,7 @@ export const state = () => {
 
 // mutations是用于同步修改state的数据
 export const mutations = {
-    changeCity(state,key){
-        state.city=key
+    changeCity(state,data){
+        state.city=data;
     }
 }
