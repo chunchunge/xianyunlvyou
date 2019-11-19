@@ -47,17 +47,14 @@
 <script>
 export default {
   methods: {
-    // 用户退出
-    handleLogout() {
-      // 解构store储存的数据
-      const {commit}=this.$store;
-      commit("user/cleanUserInfo");
-      // 弹窗提示用户退出成功
-      this.$message({
-        message:"退出成功",
-        type:"success"
-      })
-    }
+ // 用户退出
+        handleLogout(){
+            // 清空userInfo, 重新初始化store下的userInfo
+            this.$store.commit("user/setUserInfo", {
+                token: "",
+                user: {}
+            })
+        }
   }
 };
 </script>
