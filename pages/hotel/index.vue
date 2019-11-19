@@ -40,14 +40,17 @@
   </el-form-item>
 </el-form>
 <Gaode/>
+<Shaixuan/>
  </section>
 </template>
 
 <script>
 import Gaode from "@/components/hotel/gaode"
+import Shaixuan from "@/components/hotel/shaixuan"
 export default {
   components:{
-    Gaode
+    Gaode,
+    Shaixuan
   },
   mounted(){
    this.$axios({

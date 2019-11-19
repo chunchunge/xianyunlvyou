@@ -1,7 +1,7 @@
 <template>
   <section class="contianer">
     <div v-for="(item,index) in dataList" :key="index" @click="changeXiangqing(index)">
-      <div class="list" v-if="list[index].images.length >= 3" >
+      <div class="list" v-if="list[index].images.length >= 3">
         <div>
           <div class="h">
             <h4>{{item.title}}</h4>
@@ -138,14 +138,14 @@ export default {
       this.pageIndex = 1;
       if (this.city == null) {
         this.setDataList();
-      }else{
-        this.dataList.forEach((e,index)=>{
-          if(e[index].city.name==this.city){
+      } else {
+        this.dataList.forEach((e, index) => {
+          if (e[index].city.name == this.city) {
             this.setDataList();
-          }else{
+          } else {
             return;
           }
-        })
+        });
       }
     },
 
@@ -154,15 +154,13 @@ export default {
       this.pageIndex = value;
       this.setDataList();
     },
-    changeXiangqing(index){
-        
+    changeXiangqing(index) {
       this.$router.push({
-        path:"/post/xiangqing",
+        path: "/post/xiangqing",
         query: {
-                    id:this.list[index].id,
-                   
-                }
-      })
+          id: this.list[index].id
+        }
+      });
     }
   }
 };
