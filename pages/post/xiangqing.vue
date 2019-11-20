@@ -19,7 +19,7 @@
             <i class="iconfont iconpinglun"></i>
             <p>评论(100)</p>
           </div>
-          <div class="ctrl-item">
+          <div class="ctrl-item" @click="shoucang">
             <i class="iconfont iconstar1"></i>
             <p>收藏</p>
           </div>
@@ -81,6 +81,29 @@ export default {
       console.log(this.data.content);
       var main = document.querySelector(".main");
     });
+  },
+  methods: {
+    // 收藏功能
+    shoucang() {
+     const { query } = this.$route;
+      this.$axios({
+        url: "/posts/star",
+        headers: {
+          // Bearer属于jwt的token标准
+          Authorization: "Bearer " + this.$store.state.user.userInfo.token
+        },
+        params:{
+           id: query.id
+        }
+      }).then(res=>{
+        // console.log(res.data);
+        this.$message({
+          dangerouslyUseHTMLString: true,
+          message: res.data.message
+        });
+        
+      });
+    }
   }
 };
 </script>
@@ -146,7 +169,7 @@ export default {
   }
 }
 // 深度选择器
-.main /deep/  img {
+.main /deep/ img {
   width: 100%;
   height: 100%;
   padding: 10px 0;
@@ -166,7 +189,7 @@ img {
 .post-text {
   flex: 1;
   position: relative;
-  margin-left:10px;
+  margin-left: 10px;
   > div {
     line-height: 1.4em;
     height: 2.8em;
