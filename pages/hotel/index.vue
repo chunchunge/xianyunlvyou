@@ -41,16 +41,19 @@
 </el-form>
 <Gaode/>
 <Shaixuan/>
+<ItemList/>
  </section>
 </template>
 
 <script>
 import Gaode from "@/components/hotel/gaode"
 import Shaixuan from "@/components/hotel/shaixuan"
+import ItemList from "@/components/hotel/itemList"
 export default {
   components:{
     Gaode,
-    Shaixuan
+    Shaixuan,
+    ItemList
   },
   mounted(){
    this.$axios({

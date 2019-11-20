@@ -1,5 +1,5 @@
 <template>
-<div :@sear="vals">
+<div >
   <Navigation/>
   
      <Search/>
@@ -25,13 +25,7 @@ export default {
     }
   },
  computed:{
-    vals(val){
-      this.val=val;
-      console.log(11111);
-      console.log(this.val);
-      
-      
-    }
+   
   }
 }
 </script>

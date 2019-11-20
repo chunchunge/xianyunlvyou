@@ -156,7 +156,7 @@ export default {
     color:#999;
   width: 1000px;
   height: 260px;
-  padding-bottom: 20px;
+  padding-bottom: 45px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

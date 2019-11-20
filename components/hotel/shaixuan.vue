@@ -103,7 +103,7 @@ export default {
   padding-top: 15px;
   color: #666;
   height: 80px;
-  margin-bottom: 50px;
+  
 }
 .one{
   padding: 0 20px;
