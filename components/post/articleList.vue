@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="list1" v-if="list[index].images.length < 3">
-        <div class="imgs">
+        <div class="imgss">
           <img :src="item.images[0]" />
         </div>
         <div class="rights">

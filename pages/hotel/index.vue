@@ -18,7 +18,7 @@
         start-placeholder="入住日期"
         end-placeholder="离店日期"
       ></el-date-picker>
-      <el-form-item class="perpole">
+      <!-- <el-form-item class="perpole">
         <el-select placeholder="人数未定">
           <el-option>每间</el-option>
           <el-option>
@@ -27,7 +27,7 @@
             </el-form-item>
           </el-option>
         </el-select>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item class="btns">
         <el-button type="primary">查看价格</el-button>
       </el-form-item>
@@ -47,7 +47,6 @@ export default {
     return{
       value1:""
     }
-    
   },
   components: {
     Gaode,

@@ -146,11 +146,12 @@ export default {
   }
 }
 // 深度选择器
-.main /deep/ span > img {
+.main /deep/  img {
   width: 100%;
   height: 100%;
   padding: 10px 0;
 }
+
 img {
   width: 100px;
   height: 80px;

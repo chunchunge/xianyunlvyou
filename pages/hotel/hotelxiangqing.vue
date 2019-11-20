@@ -73,7 +73,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+    mounted(){
+        this.$axios({
+            url:"/hotels"
+        }).then(res=>{
+            console.log(res.data);
+            
+        })
+    }
+};
 </script>
 
 <style lang="less" scoped>
