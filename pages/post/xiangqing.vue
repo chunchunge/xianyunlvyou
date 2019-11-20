@@ -27,7 +27,7 @@
             <i class="iconfont iconfenxiang"></i>
             <p>分享</p>
           </div>
-          <div class="ctrl-item">
+          <div class="ctrl-item" @click="likes">
             <i class="iconfont iconding"></i>
             <p>
               <span v-if="data.like==null">点赞 0</span>
@@ -77,17 +77,24 @@ export default {
     }).then(res => {
       const { data } = res.data;
       this.data = data[0];
-      console.log(this.data);
-      console.log(this.data.content);
+      // console.log(this.data);
+      // console.log(this.data.content);
       var main = document.querySelector(".main");
     });
   },
   methods: {
     // 收藏功能
     shoucang() {
-     const { query } = this.$route;
+        this.gong("/posts/star")
+    },
+    likes(){
+       this.gong("/posts/like");
+       
+    },
+    gong( url){
+       const { query } = this.$route;
       this.$axios({
-        url: "/posts/star",
+        url: url,
         headers: {
           // Bearer属于jwt的token标准
           Authorization: "Bearer " + this.$store.state.user.userInfo.token
@@ -101,7 +108,9 @@ export default {
           dangerouslyUseHTMLString: true,
           message: res.data.message
         });
-        
+          if(res.data.message=="点赞成功"){
+           this.data.like+=1
+         }
       });
     }
   }
