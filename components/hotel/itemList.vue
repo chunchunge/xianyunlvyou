@@ -1,11 +1,11 @@
 <template>
   <div class="lists el-col">
     <div class="left el-col-7">
-      <div class="img"></div>
+      <div class="img"  @click="changexiangqing"></div>
     </div>
     <div class="main el-col-11">
       <div class="el-col el-col-24">
-        <h4 class="hotel-cn-name">
+        <h4 class="hotel-cn-name" @click="changexiangqing">
           <a href="#" class>好来阁商务宾馆</a>
         </h4>
         <div class="hotel-en">
@@ -123,7 +123,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+   methods:{
+     changexiangqing(){
+       this.$router.push({
+         path:"/hotel/hotelxiangqing"
+       })
+     }
+   }
+};
 </script>
 
 <style lang="less" scoped>

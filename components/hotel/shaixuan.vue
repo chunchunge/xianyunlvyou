@@ -9,17 +9,27 @@
     </div>
     <div class="two el-col el-col-4">
       <p>住宿等级</p>
-      <el-dropdown class="xia">  
+      <el-dropdown class="xia">
         <span class="el-dropdown-link lefts">
-          <span> 不限</span>
+          <span>不限</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item><i class="iconfont iconcircle"></i> 1星</el-dropdown-item>
-          <el-dropdown-item><i class="iconfont iconcircle"></i> 2星</el-dropdown-item>
-          <el-dropdown-item><i class="iconfont iconcircle"></i> 3星</el-dropdown-item>
-          <el-dropdown-item><i class="iconfont iconcircle"></i> 4星</el-dropdown-item>
-          <el-dropdown-item><i class="iconfont iconcircle"></i> 5星</el-dropdown-item>
+          <el-dropdown-item>
+            <i class="iconfont iconcircle"></i> 1星
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <i class="iconfont iconcircle"></i> 2星
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <i class="iconfont iconcircle"></i> 3星
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <i class="iconfont iconcircle"></i> 4星
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <i class="iconfont iconcircle"></i> 5星
+          </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -27,7 +37,7 @@
       <p>住宿类型</p>
       <el-dropdown class="xia">
         <span class="el-dropdown-link lefts">
-           <span> 不限</span>
+          <span>不限</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -43,7 +53,7 @@
       <p>酒店设施</p>
       <el-dropdown class="xia">
         <span class="el-dropdown-link lefts">
-          <span> 不限</span>
+          <span>不限</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -59,7 +69,7 @@
       <p>酒店品牌</p>
       <el-dropdown class="xia">
         <span class="el-dropdown-link lefts">
-           <span> 不限</span>
+          <span>不限</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -82,19 +92,17 @@ export default {
       numss: 0
     };
   },
-  components() {
-    if (nums == 4000) {
-      nums = this.nums;
-    }
-    console.log(this.nums);
-  },
+ 
+
   methods: {
+   
     formatTooltip(val) {
       this.numss = val * 40;
       return val * 40;
     }
-  }
-};
+  },
+}
+  
 </script>
 
 <style lang="less" scoped>
@@ -103,9 +111,8 @@ export default {
   padding-top: 15px;
   color: #666;
   height: 80px;
-  
 }
-.one{
+.one {
   padding: 0 20px;
 }
 .two,
@@ -114,7 +121,6 @@ export default {
 .five {
   padding: 0 20px;
   height: 60px;
-        
 }
 .one,
 .two,
@@ -127,14 +133,13 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.xia{
-  margin-top:20px;
+.xia {
+  margin-top: 20px;
 }
-.lefts{
+.lefts {
   display: flex;
   width: 130px;
   justify-content: space-between;
   align-items: center;
-  
 }
 </style>
