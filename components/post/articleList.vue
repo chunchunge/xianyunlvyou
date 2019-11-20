@@ -112,13 +112,31 @@ export default {
   computed: {
     allPrice() {
       this.city = this.$store.state.post.city;
+      this.changeData(this.city);
       console.log(this.city);
-    }
-  },
+        this.$store.commit("post/changeCity", {
+                city:""
+            })
+         this.getData()
+        }
+       
+    },
   methods: {
     getData() {
       this.$axios({
         url: "/posts"
+      }).then(res => {
+        const { data } = res.data;
+        this.list = data;
+        this.setDataList();
+      });
+    },
+    changeData(data){
+       this.$axios({
+        url: "/posts",
+        params:{
+          city:data
+        }
       }).then(res => {
         const { data } = res.data;
         this.list = data;

@@ -8,7 +8,7 @@
       </div>
       <!-- 标题栏 -->
        <div class="lists" v-show="navList" @mouseover="lis" @mouseout="hideList">
-            <div  class="listOne" v-for="(item,index) in childrens" :key="index" >
+            <div  class="listOne" v-for="(item,index) in childrens" :key="index" @click="changeCity(index)">
                 <span class="num">{{index+1}}</span> <span class="dibiao">{{item.city}}</span> <span class="miaoshu">{{item.desc}}</span>
             </div>
         </div>
@@ -45,6 +45,7 @@ export default {
       console.log(this.form);
       
     });
+
   },
   methods:{
       showList(index){
@@ -57,6 +58,10 @@ export default {
       },
       lis(){
           this.navList=true;
+      },
+      changeCity(index){
+        // 保存到store里面去
+      this.$store.commit("post/changeCity",this.childrens[index].city);
       }
   }
 };

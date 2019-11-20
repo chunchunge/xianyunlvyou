@@ -5,10 +5,14 @@
       <i class="el-icon-search" @click="searchlist"></i>
     </div>
     <div class="tuijian">
-      推荐 ：
-      <span class="te">广州</span>
-      <span class="te">上海</span>
-      <span class="te">北京</span>
+      <div class="leftd">
+推荐 ：
+      </div>
+      
+      <div v-for="(item,index) in citys" :key="index" class="ccc">
+      <span class="te" @click="cityes(index)">{{item}}</span>
+      </div>
+     
     </div>
     <div class="tuijiangonglv">
       <h4>推荐攻略</h4>
@@ -27,13 +31,19 @@
 export default {
   data(){
     return{
-      val:""
+      val:"",
+      citys:["广州","上海","北京"]
     }
   },
   methods:{
     searchlist(){
       // 保存到store里面去
       this.$store.commit("post/changeCity",this.val);
+    },
+    cityes(index){
+      this.val=this.citys[index]
+      // 保存到store里面去
+      this.$store.commit("post/changeCity",this.citys[index]);
     },
     changePage(){
       this.$router.push({
@@ -104,5 +114,9 @@ export default {
     padding-bottom: 20px;
     }
   }
+}
+.ccc,
+.leftd{
+  float: left;
 }
 </style>
