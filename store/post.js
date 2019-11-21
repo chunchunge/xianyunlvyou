@@ -1,6 +1,7 @@
 export const state = () => {
     return {
-        city:""
+        city:"",
+        posts:[],//本地储存草稿文章
     }
 }
 
@@ -8,5 +9,9 @@ export const state = () => {
 export const mutations = {
     changeCity(state,data){
         state.city=data;
+    },
+      //设置草稿文章数据
+      setLocalStorage(state,post){
+        state.posts.unshift(post)
     }
 }

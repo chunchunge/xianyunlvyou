@@ -9,7 +9,7 @@
         <h1>{{data.title}}</h1>
         <div class="post-info">
           <span>攻略：2019-05-22 10:57</span>
-          <span>阅读：10090</span>
+          <span>阅读：{{data.watch}}</span>
         </div>
       </div>
       <div class="main" v-html="data.content"></div>
@@ -80,7 +80,10 @@ export default {
       // console.log(this.data);
       // console.log(this.data.content);
       var main = document.querySelector(".main");
+  this.data.watch+=1;
     });
+    
+
   },
   methods: {
     // 收藏功能
@@ -95,9 +98,9 @@ export default {
        const { query } = this.$route;
       this.$axios({
         url: url,
-        headers: {
-          // Bearer属于jwt的token标准
-          Authorization: "Bearer " + this.$store.state.user.userInfo.token
+         headers: {
+          Authorization: `Bearer ${this.$store.state.user.userInfo.token ||
+            "NO TOKEN"}`
         },
         params:{
            id: query.id

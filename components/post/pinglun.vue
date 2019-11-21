@@ -94,6 +94,21 @@ export default {
       dialogVisible: false
     };
   },
+  mounted(){
+    const { query } = this.$route;
+
+      this.$axios({
+        url:"/posts/comments",
+         params: {
+        post: query.id
+      }
+      }).then(res=>{
+        console.log(res.data);
+        console.log(query.id);
+        
+        
+      })
+  },
   methods: {
     handleRemove(file, fileList) {
       console.log(file, fileList);
