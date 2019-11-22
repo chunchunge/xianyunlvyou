@@ -1,35 +1,29 @@
 <template>
-<div >
-  <Navigation/>
-  
-     <Search/>
-     <ArticleList/>
-</div>
-  
-    
+  <div>
+    <Navigation />
+    <Search />
+    <ArticleList />
+  </div>
 </template>
 
 <script>
-import Navigation from "@/components/post/navigation"
-import Search from "@/components/post/search"
-import ArticleList from "@/components/post/articleList"
+import Navigation from "@/components/post/navigation";
+import Search from "@/components/post/search";
+import ArticleList from "@/components/post/articleList";
 export default {
-  components:{
+  components: {
     Navigation,
     Search,
     ArticleList
   },
-  data(){
+  data() {
     return {
-      val:""
-    }
+      val: ""
+    };
   },
- computed:{
-   
-  }
-}
+  computed: {}
+};
 </script>
 
 <style lang="less" scoped>
-  
 </style>

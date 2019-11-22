@@ -33,6 +33,8 @@ export default {
   */
   plugins: [
     '@/plugins/element-ui',
+    { src: '@/plugins/vue2editor', ssr: false },
+
     { src: '@/plugins/localStorage', ssr: false },
     '@/plugins/axios'
   ],
